@@ -23,12 +23,6 @@ namespace Log_REST_Api.Controllers
 
         private bool LogExists(Guid id) => _context.Logs.Any(e => e.Id == id);
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Log>>> GetLogs()
-        {
-            return await _context.Logs.ToListAsync();
-        }
-
         [HttpGet("{id}")]
         public async Task<ActionResult<Log>> GetLog(Guid id)
         {
