@@ -1,4 +1,5 @@
 using Log_REST_Api.DatabaseContext;
+using Log_REST_Api.Services;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,8 @@ builder.Services.AddControllers().AddJsonOptions(x => {
 });
 
 builder.Services.AddDbContext<LogDatabaseContext>();
+
+builder.Services.AddScoped<ILogService, LogService>();
 
 var app = builder.Build();
 LogDatabaseContext.AddLogsData(app);
